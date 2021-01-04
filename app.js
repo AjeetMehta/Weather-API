@@ -29,7 +29,12 @@ app.post("/",function(req,res) {
       // res.write("<p>The weather is currently"+weather_description+" </p>");
       // res.write("<h1>Temperature of "+ query + tempe+" degreecelcius</h1>");
       // res.write("<img src="+urlImage+">");
-      res.render("monsoon.ejs",{weather_info:weather_description,weather_image:urlImage,weather_temp:tempe,weather_city:query});
+
+      var today=new Date();
+      var time=today.toLocaleTimeString();
+      // var options={year:'numeric',month:'short',day:'numeric'};
+      var day=today.toLocaleDateString();
+      res.render("monsoon.ejs",{weather_info:weather_description,weather_image:urlImage,weather_temp:tempe,weather_city:query,kind_of_day:day,time_day:time});
     });
    });
 });
